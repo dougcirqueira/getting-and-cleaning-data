@@ -11,18 +11,18 @@ if(!file.exists(filename)) {
 }
 
 # Reading files
-xTrain <- as.data.frame(read.table(file = "UCI HAR Dataset/train/X_train.txt"))
-yTrain <- as.data.frame(read.table(file = "UCI HAR Dataset/train/y_train.txt"))
+xTrain <- read.table(file = "UCI HAR Dataset/train/X_train.txt")
+yTrain <- read.table(file = "UCI HAR Dataset/train/y_train.txt")
 
-xTest <- as.data.frame(read.table(file = "UCI HAR Dataset/test/X_test.txt"))
-yTest <- as.data.frame(read.table(file = "UCI HAR Dataset/test/y_test.txt"))
+xTest <- read.table(file = "UCI HAR Dataset/test/X_test.txt")
+yTest <- read.table(file = "UCI HAR Dataset/test/y_test.txt")
 
-featureNames <- as.data.frame(read.table("UCI HAR Dataset/features.txt"))
+featureNames <- read.table("UCI HAR Dataset/features.txt")
 
-activityLabels <- as.data.frame(read.table("UCI HAR Dataset/activity_labels.txt"))
+activityLabels <- read.table("UCI HAR Dataset/activity_labels.txt")
 
-subjectTrain <- as.data.frame(read.table("UCI HAR Dataset/train/subject_train.txt"))
-subjectTest <- as.data.frame(read.table("UCI HAR Dataset/test/subject_test.txt"))
+subjectTrain <- read.table("UCI HAR Dataset/train/subject_train.txt")
+subjectTest <- read.table("UCI HAR Dataset/test/subject_test.txt")
 
 
 # 1. Merges the training and the test sets to create one data set.
@@ -78,4 +78,5 @@ tidyDatasetFinal <- aggregate(.~subject + activity, tidyDataset, mean)
 # Export the tidy data set
 write.csv(tidyDatasetFinal,file="tidyDataset.csv", row.names = F)
 write.csv(tidyDatasetFinal,file="tidyDataset.txt", row.names = F)
+write.table(tidyDatasetFinal,file="tidyDatasetTable.txt", row.names = F)
 
